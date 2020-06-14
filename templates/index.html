@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	
+	
+	<style>
+            body {
+                font-family: Roboto;
+                background: -webkit-linear-gradient(90deg, #2BC0E4 10%, #EAECC6 90%)
+            }
+
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0
+            }
+
+            h1 {
+                background: #2980b9;
+                color: white;
+                margin: 0;
+                padding: 10px 20px;
+                text-transform: uppercase;
+                font-size: 24px;
+                font-weight: normal
+            }
+
+            .fa-plus {
+                float: right
+            }
+
+            li {
+                background: #fff;
+                height: 40px;
+                line-height: 40px;
+                color: black;
+                font-weight:bold;
+            }
+
+            li:nth-child(2n) {
+                background: #f7f7f7
+            }
+
+            span {
+                background: #e74c3c;
+                height: 40px;
+                margin-right: 20px;
+                text-align: center;
+                color: white;
+                width: 0;
+                display: inline-block;
+                transition: 0.2s linear;
+                opacity: 0
+            }
+
+            .span1 {
+                background: white;
+                height: 40px;
+                margin-right: 20px;
+                text-align: center;
+                color: white;
+                width: 0;
+                display: inline-block;
+                transition: 0.2s linear;
+                opacity: 0
+            }
+
+
+            li:hover span {
+                width: 40px;
+                opacity: 1.0
+            }
+
+            input {
+                font-size: 18px;
+                color: #2980b9;
+                background-color: #f7f7f7;
+                width: 100%;
+                padding: 13px 13px 13px 20px;
+                box-sizing: border-box;
+                border: 3px solid rgba(0, 0, 0, 0)
+            }
+
+            input:focus {
+                background: #fff;
+                border: 3px solid #2980b9;
+                outline: none
+            }
+
+            #container {
+                width: 360px;
+                margin: 100px auto;
+                background: #f7f7f7;
+                box-shadow: 0 0 3px rgba(0, 0, 0, 0.1)
+            }
+
+            .completed {
+                color: gray;
+                text-decoration: line-through
+            }
+
+            footer {
+                    position:fixed;
+                bottom:0px;
+                width:100%;
+                height:30px;   /* Height of the footer */
+                background: linear-gradient(to right, #77A1D3 0%, #79CBCA 51%, #77A1D3 100%)
+                }
+
+            .footer-div{
+                                    font-size: 5px ; 
+                                    color:white;
+                                    
+                                }
+
+	
+	</style>
+</head>
+
+
+<body>
+
+    <div id="container">
+        <h1>To-Do List <i class="fa fa-plus"></i></h1> 
+
+        <form action="{% url 'add' %}" method="POST" name="form">
+            {% csrf_token %}
+            {{form.text }}
+
+        </form>
+
+
+        <ul>
+            {%for todo in todo_list%}
+                {% if todo.complete %}
+                    <li><span><a href="{% url 'delete' todo.id %}"><i class="fa fa-trash"></i></a></span><strike>{{ todo.text }}</strike></li>
+                {%else%}
+                    <li><span ><a href="{% url 'complete' todo.id %}"><i class="fa fa-check"></i></a></span> {{ todo.text }}</li>
+                {%endif%}
+            {%endfor%}
+        </ul>
+
+        
+
+    </div>
+
+    <footer class="footer">
+			 <div class="footer-div"><center><h5 > &copy; Designed by LUCKY</h5></center></div>
+    </footer>
+
+    
+
+
+<script>
+
+		$(document).ready(function(){
+
+                $("input[type='text']").keypress(function(event){
+                if(event.which === 13){
+
+                $('text').submit();
+ 
+                }
+                });
+
+                $(".fa-plus").click(function(){
+                $("form").fadeToggle();
+                });
+
+                if($("form").fadeIn())
+                {
+                    $("form").fadeOut(0);
+                }
+
+
+                });
+                        
+</script>
+
+
+
+
+</body>
+</html>

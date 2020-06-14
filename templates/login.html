@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	
+	<style>
+            body {
+                font-family: "Lato", sans-serif;
+                            
+            }
+
+
+
+            .main-head{
+                height: 150px;
+                background: #FFF;
+            
+            }
+
+            .sidenav {
+                height: 100%;
+                background-color: #000;
+                overflow-x: hidden;
+                padding-top: 20px;
+                background: -webkit-linear-gradient(90deg, #2BC0E4 10%, #EAECC6 90%);
+            
+            }
+
+            .sidenav h2, p{
+                font-weight: bold;
+            }
+
+
+            .main {
+                padding: 0px 10px;
+            }
+
+            @media screen and (max-height: 450px) {
+                .sidenav {padding-top: 15px;}
+            }
+
+            @media screen and (max-width: 450px) {
+                .login-form{
+                    margin-top: 10%;
+                }
+
+                .register-form{
+                    margin-top: 10%;
+                }
+            }
+
+            @media screen and (min-width: 768px){
+                .main{
+                    margin-left: 40%; 
+                }
+
+                .sidenav{
+                    width: 40%;
+                    position: fixed;
+                    z-index: 1;
+                    top: 0;
+                    left: 0;
+                }
+
+                .login-form{
+                    margin-top: 80%;
+                }
+
+                .register-form{
+                    margin-top: 20%;
+                }
+            }
+
+
+            .login-main-text{
+                margin-top: 20%;
+                padding: 60px;
+                color: #fff;
+            }
+
+            .login-main-text h2{
+                font-weight: 300;
+            }
+
+            .btn{
+                
+                
+                color: white;
+            }
+            
+
+            .btn-grad {background-image: linear-gradient(to right, #77A1D3 0%, #79CBCA 51%, #77A1D3 100%)}
+            .btn-grad:hover { background-position: right center; }
+
+
+        footer {
+                    position:fixed;
+                bottom:0px;
+                width:100%;
+                height:30px;   /* Height of the footer */
+                background: linear-gradient(to right, #77A1D3 0%, #79CBCA 51%, #77A1D3 100%)
+                }
+
+            .footer-div{
+                                    font-size: 5px ; 
+                                    color:white;
+                                    
+                                }
+
+
+            
+            .center {
+                                display: block;
+                                margin-left: auto;
+                                margin-right: auto;
+                                width: 60%;
+                                }
+
+	</style>
+	    
+
+
+</head>
+
+
+<body>
+
+
+<div class="sidenav">
+         <div class="login-main-text">
+            <h2>TODO<br> Login Page</h2>
+            <p>Login to create your own TODO List.</p>
+
+            
+
+         </div>
+      </div>
+      <div class="main">
+         <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+               <form action="{% url 'log' %}" method="POST" name="login-form">
+
+                {% csrf_token %}
+                  <div class="form-group">
+                     
+                     <input name ="username"  type="text" class="form-control" placeholder="User Name" required>
+                  </div>
+                  
+                  <button type="submit" class="btn btn-grad " >Login</button>
+
+               </form>
+            </div>
+         </div>
+
+         
+      </div>
+
+      <footer class="footer">
+			 <div class="footer-div"><center><h5 class="center"> &copy; Designed by LUCKY</h5></center></div>
+    </footer>
+
+      
+            
+
+</body>
+</html>
+
