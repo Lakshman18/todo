@@ -140,7 +140,7 @@
 
 
         <ul>
-            {%for todo in todo_list%}
+            {%for todo in todo_list %}
                 {% if todo.complete %}
                     <li><span><a href="{% url 'delete' todo.id %}"><i class="fa fa-trash"></i></a></span><strike>{{ todo.text }}</strike></li>
                 {%else%}

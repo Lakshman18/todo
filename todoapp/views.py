@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from .models import todo
 from .forms import todoform
 from django.views.decorators.http import require_POST
@@ -53,10 +53,10 @@ def log(request):
         global username
         username = request.POST['username']
         if username != '':
-            if User.objects.filter(username=username).exists():
+            if User.objects.filter(username = username).exists():
                 return redirect('index')
             else:
-                user = User.objects.create_user(username=username)
+                user = User.objects.create_user(username = username)
                 user.save()
                 return redirect('index')
 
