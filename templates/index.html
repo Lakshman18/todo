@@ -10,8 +10,8 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-	
-	
+
+
 	<style>
             body {
                 font-family: Roboto;
@@ -59,25 +59,16 @@
                 width: 0;
                 display: inline-block;
                 transition: 0.2s linear;
-                opacity: 0
-            }
-
-            .span1 {
-                background: white;
-                height: 40px;
-                margin-right: 20px;
-                text-align: center;
-                color: white;
-                width: 0;
-                display: inline-block;
-                transition: 0.2s linear;
-                opacity: 0
+                opacity: 0;
             }
 
 
-            li:hover span {
+
+
+            li:hover span{
+
                 width: 40px;
-                opacity: 1.0
+                opacity: 1.0;
             }
 
             input {
@@ -117,12 +108,28 @@
                 }
 
             .footer-div{
-                                    font-size: 5px ; 
+                                    font-size: 5px ;
                                     color:white;
-                                    
+
                                 }
 
-	
+
+            @media screen and (min-width: 600px){
+
+                        span:active {
+                            width: 40px;
+                            opacity: 1.0
+                        }
+
+                        li:active span {
+                width: 40px;
+                opacity: 1.0
+            }
+
+            }
+
+
+
 	</style>
 </head>
 
@@ -130,7 +137,7 @@
 <body>
 
     <div id="container">
-        <h1>To-Do List <i class="fa fa-plus"></i></h1> 
+        <h1>To-Do List <i class="fa fa-plus"></i></h1>
 
         <form action="{% url 'add' %}" method="POST" name="form">
             {% csrf_token %}
@@ -142,14 +149,14 @@
         <ul>
             {%for todo in todo_list %}
                 {% if todo.complete %}
-                    <li><span><a href="{% url 'delete' todo.id %}"><i class="fa fa-trash"></i></a></span><strike>{{ todo.text }}</strike></li>
+                    <li onclick=""><a href="{% url 'delete' todo.id %}"><span ><i class="fa fa-trash"></i></span></a><strike>{{ todo.text }}</strike></li>
                 {%else%}
-                    <li><span ><a href="{% url 'complete' todo.id %}"><i class="fa fa-check"></i></a></span> {{ todo.text }}</li>
+                    <li onclick=""><a href="{% url 'complete' todo.id %}"><span ><i class="fa fa-check"></i></a></span></a> {{ todo.text }}</li>
                 {%endif%}
             {%endfor%}
         </ul>
 
-        
+
 
     </div>
 
@@ -157,7 +164,7 @@
 			 <div class="footer-div"><center><h5 > &copy; Designed by LUCKY</h5></center></div>
     </footer>
 
-    
+
 
 
 <script>
@@ -168,7 +175,7 @@
                 if(event.which === 13){
 
                 $('text').submit();
- 
+
                 }
                 });
 
@@ -183,7 +190,7 @@
 
 
                 });
-                        
+
 </script>
 
 
