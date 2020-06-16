@@ -26,7 +26,7 @@ SECRET_KEY = '1&dn-pl8e$dlw-cva54=yhn5a(59v!^pw%tf(0kn$v#oqj^41b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['lucky08.pythonanywhere.com']
 
 
 # Application definition
@@ -79,8 +79,8 @@ WSGI_APPLICATION = 'todo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'NAME': str(BASE_DIR / "db.sqlite3"),
+           }
 }
 
 
